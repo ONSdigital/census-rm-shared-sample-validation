@@ -20,16 +20,16 @@
     <maven.compiler.target>17</maven.compiler.target>
   </properties>
 
-  <distributionManagement>
-    <snapshotRepository>
-      <id>artifact-registry-snapshots</id>
-      <url>artifactregistry://europe-west2-maven.pkg.dev/ssdc-rm-ci/rm-snapshots</url>
-    </snapshotRepository>
-    <repository>
-      <id>artifact-registry-releases</id>
-      <url>artifactregistry://europe-west2-maven.pkg.dev/ons-ci-rm/rm-releases</url>
-    </repository>
-  </distributionManagement>
+<!--  <distributionManagement>-->
+<!--    <snapshotRepository>-->
+<!--      <id>artifact-registry-snapshots</id>-->
+<!--      <url>artifactregistry://europe-west2-maven.pkg.dev/ssdc-rm-ci/rm-snapshots</url>-->
+<!--    </snapshotRepository>-->
+<!--    <repository>-->
+<!--      <id>artifact-registry-releases</id>-->
+<!--      <url>artifactregistry://europe-west2-maven.pkg.dev/ons-ci-rm/rm-releases</url>-->
+<!--    </repository>-->
+<!--  </distributionManagement>-->
 
   <build>
     <defaultGoal>clean install</defaultGoal>
