@@ -134,8 +134,7 @@ public final class ColumnValidators {
       new ColumnValidator("FIELDOFFICER_ID", new Rule[] {new MandatoryRule(), new LengthRule(13)}),
       new ColumnValidator(
           "CE_EXPECTED_CAPACITY", new Rule[] {new NumericRule(), new LengthRule(4)}),
-      new ColumnValidator(
-          "CE_SECURE", new Rule[] {new MandatoryRule(), new InSetRule(new String[] {"0", "1"})}),
+      new ColumnValidator("CE_SECURE", new Rule[] {new MandatoryRule(), new BooleanRule()}),
       new ColumnValidator("PRINT_BATCH", new Rule[] {new MandatoryRule(), new LengthRule(2)}),
     };
 

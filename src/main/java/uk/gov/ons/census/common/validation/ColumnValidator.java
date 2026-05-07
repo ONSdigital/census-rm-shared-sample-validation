@@ -36,11 +36,20 @@ public class ColumnValidator implements Serializable {
   }
 
   public Optional<String> validateData(
-      String dataToValidate, boolean excludeDataFromReturnedErrorMsgs) {
+      Object dataToValidate, boolean excludeDataFromReturnedErrorMsgs) {
     List<String> validationErrors = new LinkedList<>();
 
     for (Rule rule : rules) {
-      Optional<String> validationError = rule.checkValidity(dataToValidate);
+      Optional<String> validationError;
+      if (dataToValidate instanceof String stringData) {
+        validationError = rule.checkValidity(stringData);
+      } else if (dataToValidate instanceof Boolean booleanData) {
+        validationError = rule.checkValidity(booleanData);
+      } else if (dataToValidate instanceof Integer integerData) {
+        validationError = rule.checkValidity(integerData);
+      } else {
+        validationError = rule.checkValidity(dataToValidate);
+      }
       if (validationError.isPresent()) {
         if (excludeDataFromReturnedErrorMsgs) {
           validationErrors.add(
@@ -55,7 +64,7 @@ public class ColumnValidator implements Serializable {
               "Column '"
                   + columnName
                   + "' value '"
-                  + dataToValidate
+                  + dataToValidate.toString()
                   + "' validation error: "
                   + validationError.get());
         }

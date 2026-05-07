@@ -5,6 +5,9 @@ import java.util.Optional;
 
 @JsonAutoDetect(fieldVisibility = JsonAutoDetect.Visibility.ANY)
 public class NumericRule implements Rule {
+  // This rule checks that as a string, the data contains only digit characters, or as an int the
+  // number is positive,
+  // so can be represented as a string of pure digits.
   @Override
   public Optional<String> checkValidity(String data) {
     if (data.matches("\\d*")) {
@@ -12,5 +15,13 @@ public class NumericRule implements Rule {
     }
 
     return Optional.of("Contains non digit characters");
+  }
+
+  @Override
+  public Optional<String> checkValidity(int data) {
+    if (data < 0) {
+      return Optional.of("Negative integers are not allowed");
+    }
+    return Optional.empty();
   }
 }
