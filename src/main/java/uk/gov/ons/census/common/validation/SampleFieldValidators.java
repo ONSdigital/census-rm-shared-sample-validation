@@ -1,10 +1,11 @@
 package uk.gov.ons.census.common.validation;
 
-public final class ColumnValidators {
-  private ColumnValidators() {}
+public final class SampleFieldValidators {
+  private SampleFieldValidators() {}
 
   public static ColumnValidator[] getValidators() {
-    ColumnValidator[] columnValidators = {
+
+    return new ColumnValidator[]{
       new ColumnValidator(
           "UPRN", new Rule[] {new MandatoryRule(), new LengthRule(13), new NumericRule()}),
       new ColumnValidator(
@@ -137,7 +138,5 @@ public final class ColumnValidators {
       new ColumnValidator("CE_SECURE", new Rule[] {new MandatoryRule(), new BooleanRule()}),
       new ColumnValidator("PRINT_BATCH", new Rule[] {new MandatoryRule(), new LengthRule(2)}),
     };
-
-    return columnValidators;
   }
 }
