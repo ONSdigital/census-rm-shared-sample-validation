@@ -60,11 +60,17 @@ public class ColumnValidator implements Serializable {
                   + "' validation error: "
                   + validationError.get());
         } else {
+          String dataString;
+          if (dataToValidate == null) {
+            dataString = "null";
+          } else {
+            dataString = dataToValidate.toString();
+          }
           validationErrors.add(
               "Column '"
                   + columnName
                   + "' value '"
-                  + dataToValidate.toString()
+                  + dataString
                   + "' validation error: "
                   + validationError.get());
         }

@@ -18,4 +18,9 @@ public class BooleanRule implements Rule {
   public Optional<String> checkValidity(boolean data) {
     return Optional.empty();
   }
+
+  @Override
+  public Optional<String> checkValidity(Boolean data) {
+    return Optional.empty();
+  }
 }

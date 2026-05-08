@@ -5,7 +5,7 @@ public final class SampleFieldValidators {
 
   public static ColumnValidator[] getValidators() {
 
-    return new ColumnValidator[]{
+    return new ColumnValidator[] {
       new ColumnValidator(
           "UPRN", new Rule[] {new MandatoryRule(), new LengthRule(13), new NumericRule()}),
       new ColumnValidator(

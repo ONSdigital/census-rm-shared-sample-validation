@@ -22,6 +22,16 @@ public class MandatoryRule implements Rule {
   }
 
   @Override
+  public Optional<String> checkValidity(boolean data) {
+    return Optional.empty();
+  }
+
+  @Override
+  public Optional<String> checkValidity(Boolean data) {
+    return Optional.empty();
+  }
+
+  @Override
   public Optional<String> checkValidity(Object data) {
     if (data == null) {
       return Optional.of("Mandatory value missing");
