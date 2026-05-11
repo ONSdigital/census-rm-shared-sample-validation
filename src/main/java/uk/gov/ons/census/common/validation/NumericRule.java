@@ -18,7 +18,7 @@ public class NumericRule implements Rule {
   }
 
   @Override
-  public Optional<String> checkValidity(int data) {
+  public Optional<String> checkValidity(Integer data) {
     if (data < 0) {
       return Optional.of("Negative integers are not allowed");
     }

@@ -17,7 +17,7 @@ public class MandatoryRule implements Rule {
   }
 
   @Override
-  public Optional<String> checkValidity(int data) {
+  public Optional<String> checkValidity(Integer data) {
     return Optional.empty();
   }
 

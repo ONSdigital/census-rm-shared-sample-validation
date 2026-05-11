@@ -6,7 +6,7 @@ import java.util.Optional;
 public interface Rule extends Serializable {
   Optional<String> checkValidity(String data);
 
-  default Optional<String> checkValidity(int data) {
+  default Optional<String> checkValidity(Integer data) {
     throw new UnsupportedOperationException(
         this.getClass().getSimpleName() + " is not implemented for integers");
   }

@@ -1,7 +1,9 @@
 package uk.gov.ons.census.common.validation;
 
+import com.fasterxml.jackson.annotation.JsonAutoDetect;
 import java.util.Optional;
 
+@JsonAutoDetect(fieldVisibility = JsonAutoDetect.Visibility.ANY)
 public class BooleanRule implements Rule {
   // Booleans are represented as "1" or "0" in string form (e.g. in CSV files), or as a boolean
   // types once ingested

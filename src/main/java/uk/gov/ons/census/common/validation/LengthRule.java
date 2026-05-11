@@ -6,7 +6,7 @@ import java.util.Optional;
 
 public class LengthRule implements Rule {
 
-  private final int maxLength;
+  private final Integer maxLength;
 
   @JsonCreator
   public LengthRule(@JsonProperty("maxLength") int maxLength) {
@@ -22,7 +22,16 @@ public class LengthRule implements Rule {
     return Optional.empty();
   }
 
-  public int getMaxLength() {
+  @Override
+  public Optional<String> checkValidity(Integer data) {
+    if (String.valueOf(data).length() > maxLength) {
+      return Optional.of("Exceeded max length of " + maxLength);
+    }
+
+    return Optional.empty();
+  }
+
+  public Integer getMaxLength() {
     return maxLength;
   }
 }
