@@ -38,15 +38,7 @@ public class ColumnValidator implements Serializable {
 
     for (Rule rule : rules) {
       Optional<String> validationError;
-//      if (dataToValidate instanceof String stringData) {
-//        validationError = rule.checkValidity(stringData);
-//      } else if (dataToValidate instanceof Boolean booleanData) {
-//        validationError = rule.checkValidity(booleanData);
-//      } else if (dataToValidate instanceof Integer integerData) {
-//        validationError = rule.checkValidity(integerData);
-//      } else {
         validationError = rule.checkValidity(dataToValidate);
-//      }
       if (validationError.isPresent()) {
         if (excludeDataFromReturnedErrorMsgs) {
           validationErrors.add(
