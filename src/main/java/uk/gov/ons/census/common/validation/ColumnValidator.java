@@ -1,29 +1,26 @@
 package uk.gov.ons.census.common.validation;
 
-import com.fasterxml.jackson.annotation.JsonCreator;
-import com.fasterxml.jackson.annotation.JsonProperty;
-import com.fasterxml.jackson.annotation.JsonTypeInfo;
 import java.io.Serializable;
 import java.util.LinkedList;
 import java.util.List;
 import java.util.Map;
 import java.util.Optional;
 
+import lombok.Getter;
+import uk.gov.ons.census.common.model.entity.SampleField;
+
 public class ColumnValidator implements Serializable {
 
-  private final String columnName;
+  @Getter private final String columnName;
 
-  @JsonTypeInfo(
-      use = JsonTypeInfo.Id.CLASS,
-      include = JsonTypeInfo.As.PROPERTY,
-      property = "className")
+  @Getter private final SampleField sampleField;
+
   private Rule[] rules;
 
-  @JsonCreator
-  public ColumnValidator(
-      @JsonProperty("columnName") String columnName, @JsonProperty("rules") Rule[] rules) {
-    this.columnName = columnName;
+  public ColumnValidator(SampleField sampleField, Rule[] rules) {
+    this.sampleField = sampleField;
     this.rules = rules.clone();
+    this.columnName = sampleField.toString();
   }
 
   public Optional<String> validateRow(Map<String, String> rowData) {
@@ -41,15 +38,15 @@ public class ColumnValidator implements Serializable {
 
     for (Rule rule : rules) {
       Optional<String> validationError;
-      if (dataToValidate instanceof String stringData) {
-        validationError = rule.checkValidity(stringData);
-      } else if (dataToValidate instanceof Boolean booleanData) {
-        validationError = rule.checkValidity(booleanData);
-      } else if (dataToValidate instanceof Integer integerData) {
-        validationError = rule.checkValidity(integerData);
-      } else {
+//      if (dataToValidate instanceof String stringData) {
+//        validationError = rule.checkValidity(stringData);
+//      } else if (dataToValidate instanceof Boolean booleanData) {
+//        validationError = rule.checkValidity(booleanData);
+//      } else if (dataToValidate instanceof Integer integerData) {
+//        validationError = rule.checkValidity(integerData);
+//      } else {
         validationError = rule.checkValidity(dataToValidate);
-      }
+//      }
       if (validationError.isPresent()) {
         if (excludeDataFromReturnedErrorMsgs) {
           validationErrors.add(
@@ -82,10 +79,6 @@ public class ColumnValidator implements Serializable {
     }
 
     return Optional.empty();
-  }
-
-  public String getColumnName() {
-    return columnName;
   }
 
   public Rule[] getRules() {

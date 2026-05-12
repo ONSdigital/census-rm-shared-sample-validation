@@ -8,7 +8,7 @@ import org.springframework.util.StringUtils;
 public class MandatoryRule implements Rule {
 
   @Override
-  public Optional<String> checkValidity(String data) {
+  public Optional<String> checkStringValidity(String data) {
     if (!StringUtils.hasText(data)) {
       return Optional.of("Mandatory value missing");
     }
@@ -17,7 +17,12 @@ public class MandatoryRule implements Rule {
   }
 
   @Override
-  public Optional<String> checkValidity(Integer data) {
+  public Optional<String> checkIntegerValidity(Integer data) {
+    return Optional.empty();
+  }
+
+  @Override
+  public Optional<String> checkBoolValidity(Boolean data) {
     return Optional.empty();
   }
 
@@ -27,15 +32,10 @@ public class MandatoryRule implements Rule {
   }
 
   @Override
-  public Optional<String> checkValidity(Boolean data) {
-    return Optional.empty();
-  }
-
-  @Override
   public Optional<String> checkValidity(Object data) {
     if (data == null) {
       return Optional.of("Mandatory value missing");
     }
-    return Optional.empty();
+    return Rule.super.checkValidity(data);
   }
 }

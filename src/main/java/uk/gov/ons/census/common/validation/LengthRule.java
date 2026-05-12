@@ -14,7 +14,7 @@ public class LengthRule implements Rule {
   }
 
   @Override
-  public Optional<String> checkValidity(String data) {
+  public Optional<String> checkStringValidity(String data) {
     if (data.length() > maxLength) {
       return Optional.of("Exceeded max length of " + maxLength);
     }
@@ -23,7 +23,7 @@ public class LengthRule implements Rule {
   }
 
   @Override
-  public Optional<String> checkValidity(Integer data) {
+  public Optional<String> checkIntegerValidity(Integer data) {
     if (String.valueOf(data).length() > maxLength) {
       return Optional.of("Exceeded max length of " + maxLength);
     }

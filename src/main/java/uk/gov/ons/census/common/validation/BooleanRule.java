@@ -9,7 +9,7 @@ public class BooleanRule implements Rule {
   // types once ingested
 
   @Override
-  public Optional<String> checkValidity(String data) {
+  public Optional<String> checkStringValidity(String data) {
     if (!"1".equals(data) && !"0".equals(data)) {
       return Optional.of("Not a valid string boolean value (expected \"1\" or \"0\")");
     }
@@ -17,12 +17,12 @@ public class BooleanRule implements Rule {
   }
 
   @Override
-  public Optional<String> checkValidity(boolean data) {
+  public Optional<String> checkBoolValidity(Boolean data) {
     return Optional.empty();
   }
 
   @Override
-  public Optional<String> checkValidity(Boolean data) {
+  public Optional<String> checkValidity(boolean data) {
     return Optional.empty();
   }
 }

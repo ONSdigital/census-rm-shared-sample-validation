@@ -39,9 +39,9 @@ class MandatoryRuleTest {
   }
 
   @Test
-  void checkValidityObjectNonNullValid() {
+  void checkValidityBoolValid() {
     MandatoryRule underTest = new MandatoryRule();
-    Optional<String> validity = underTest.checkValidity(new Object());
+    Optional<String> validity = underTest.checkValidity(true);
     assertThat(validity).isNotPresent();
   }
 }

@@ -9,7 +9,7 @@ public class NumericRule implements Rule {
   // number is positive,
   // so can be represented as a string of pure digits.
   @Override
-  public Optional<String> checkValidity(String data) {
+  public Optional<String> checkStringValidity(String data) {
     if (data.matches("\\d*")) {
       return Optional.empty();
     }
@@ -18,7 +18,7 @@ public class NumericRule implements Rule {
   }
 
   @Override
-  public Optional<String> checkValidity(Integer data) {
+  public Optional<String> checkIntegerValidity(Integer data) {
     if (data < 0) {
       return Optional.of("Negative integers are not allowed");
     }

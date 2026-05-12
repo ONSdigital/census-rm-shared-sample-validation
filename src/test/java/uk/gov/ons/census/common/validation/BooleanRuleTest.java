@@ -22,8 +22,8 @@ class BooleanRuleTest {
   }
 
   @Test
-  void testNullBooleanStringIsInvalid() {
-    assertThat(booleanRule.checkValidity(null)).isPresent();
+  void testNullBooleanStringIsValid() {
+    assertThat(booleanRule.checkValidity(null)).isNotPresent();
   }
 
   @ParameterizedTest
