@@ -123,8 +123,9 @@
         <executions>
           <execution>
             <goals>
-              <goal>check</goal>
+              <goal>apply</goal>
             </goals>
+            <phase>process-sources</phase>
           </execution>
         </executions>
       </plugin>
