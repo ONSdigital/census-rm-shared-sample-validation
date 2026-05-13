@@ -5,22 +5,17 @@ import java.util.LinkedList;
 import java.util.List;
 import java.util.Map;
 import java.util.Optional;
-
 import lombok.Getter;
-import uk.gov.ons.census.common.model.entity.SampleField;
 
 public class ColumnValidator implements Serializable {
 
   @Getter private final String columnName;
 
-  @Getter private final SampleField sampleField;
-
   private Rule[] rules;
 
-  public ColumnValidator(SampleField sampleField, Rule[] rules) {
-    this.sampleField = sampleField;
+  public ColumnValidator(String columnName, Rule[] rules) {
     this.rules = rules.clone();
-    this.columnName = sampleField.toString();
+    this.columnName = columnName;
   }
 
   public Optional<String> validateRow(Map<String, String> rowData) {
