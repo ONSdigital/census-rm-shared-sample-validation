@@ -33,7 +33,7 @@ public class ColumnValidator implements Serializable {
 
     for (Rule rule : rules) {
       Optional<String> validationError;
-        validationError = rule.checkValidity(dataToValidate);
+      validationError = rule.checkValidity(dataToValidate);
       if (validationError.isPresent()) {
         if (excludeDataFromReturnedErrorMsgs) {
           validationErrors.add(
